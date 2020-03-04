@@ -135,7 +135,7 @@ cons
 
 Stack and Queue 
 
-Stack - a list with the restriction that insertion and deletion can be perfromed only from one end, called the top
+Stack - a list with the restriction that insertion and deletion can be performed only from one end, called the top
 - "last in first out" (LIFO)
 - function callstack, a stack of plates, a bottle of tennis balls, 3 towers of Hanoi
 - javascript Arrays :add = .push() / .pop() off top 
@@ -148,9 +148,11 @@ call stack - depth first search
 
 
 
-Queue = first in first out
-add to the back enqueuing / dequeueing = remove from from 
-breadth first search 
+Queue = a list or collection with the restriction that insertion can be performed at one end (tail/rear) and deletion can be performed at the other end (head/front)
+- "first in first out" (FIFO)
+- enqueuing - add to the tail (rear or back) / dequeueing (delete)= remove from the head (front)
+- implementation can be array or linked list
+- breadth first search
 
 stacks and queue
 pro 
