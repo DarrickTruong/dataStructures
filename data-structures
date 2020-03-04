@@ -110,7 +110,6 @@ class SLL:
 
 
 
-
 Arrays
 continuous block of cells in memory
 pros
@@ -136,9 +135,18 @@ cons
 
 Stack and Queue 
 
-Stack = last in first out 
-add = .push() / .pop() off top
+Stack - a list with the restriction that insertion and deletion can be perfromed only from one end, called the top
+- "last in first out" (LIFO)
+- function callstack, a stack of plates, a bottle of tennis balls, 3 towers of Hanoi
+- javascript Arrays :add = .push() / .pop() off top 
+- function callstack, recursion
 call stack - depth first search 
+
+
+
+
+
+
 
 Queue = first in first out
 add to the back enqueuing / dequeueing = remove from from 
