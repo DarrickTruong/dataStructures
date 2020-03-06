@@ -138,7 +138,7 @@ Stack and Queue
 Stack - a list with the restriction that insertion and deletion can be performed only from one end, called the top
 - "last in first out" (LIFO)
 - function callstack, a stack of plates, a bottle of tennis balls, 3 towers of Hanoi
-- javascript Arrays :add = .push() / .pop() off top 
+- java Arrays :add = .push() / .pop() off top 
 - function callstack, recursion
 call stack - depth first search 
 
