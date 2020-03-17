@@ -171,3 +171,10 @@ binary search tree - each node can have two childen
 
 
 
+JavaScript Data Types
+SET - Set objects are collections of values. You can iterate through the elements of a set in insertion order. 
+A value in the Set may only occur once; it is unique in the Set's collection.
+
+MAP - The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value 
+(both objects and primitive values) may be used as either a key or a value.
+
