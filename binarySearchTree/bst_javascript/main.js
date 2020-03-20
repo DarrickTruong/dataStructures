@@ -1,4 +1,4 @@
-var BinarySearchTree = require('./bst');
+var BinarySearchTree = require('./bst_js');
 
 var bst = new BinarySearchTree();
 bst.insert(23);
@@ -23,5 +23,7 @@ console.log("\n\nMAXIMUM VALUE");
 console.log(bst.getMax());
 console.log("\n\nFind node with data 3");
 console.log(bst.find(3));
+console.log("\n\nDelete node with data 37");
+console.info(bst.delete(37));
 
 

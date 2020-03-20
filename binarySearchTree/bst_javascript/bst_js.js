@@ -110,7 +110,7 @@ var BST = (function () {
         } else if (data > node.show()) {
           return iterate(node.right, data);
         } else if (data == node.show()) {
-          console.log('in true');
+          // console.log('in true');
           return true;
         } else {
           return false;
@@ -119,6 +119,43 @@ var BST = (function () {
     };
     // console.log('iterate', iterate(pointer, check))
     return iterate(pointer, check);
+  }
+
+  BST.prototype.delete = function (data) {
+    var remove = function (node, data) {
+      if (this.root == null) {
+        return null
+      }
+      if (data == node.data) {
+        // node has no children
+        if (node.left == null && node.right == null) {
+          return null;
+          // node has one child
+        } else if (node.left == null) {
+          return node.right;
+        } else if (node.right == null) {
+          return node.left;
+        }
+        // node has two children
+        var pointer = node.right;
+        while (pointer.left != null) {
+          pointer = pointer.left;
+        }
+        node.data = pointerNode.data;
+        node.right = remove(node.right, pointerNode.data);
+      }
+      else if (data < node.data) {
+        node.left = remove(node.left, data);
+        return node;
+      }
+      else if (data > node.data) {
+        node.right = remove(node.right, data);
+        return node;
+      }
+    }
+
+    return remove(this.root, data);
+
   }
 
 
