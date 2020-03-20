@@ -44,3 +44,22 @@ cities.insert("San Francisco", "Los Angeles");
 cities.display();
 cities.insert("Seattle", "Los Angeles");
 cities.display();
+
+
+let HashTable = require("./hashTable")
+var newHash = new HashTable();
+newHash.simplePut("Ginelle");
+var names = ["Tony", "Tori", "Kate", "Kyle", "Thomas", "Dale",
+    "David", "Daisy", "Andy", "Albert", "Dane", "Shane", "Lane",
+    "Janet", "Katelyn", "Janet", "Vivian", "Joe"];
+var simpleHashTable = new HashTable();
+for (var i = 0; i < names.length; i++) {
+    simpleHashTable.simplePut(names[i]);
+}
+simpleHashTable.showDistribution();
+
+var betterHashTable = new HashTable();
+for (var i = 0; i < names.length; i++) {
+    betterHashTable.linkPut(names[i]);
+}
+betterHashTable.showDistribution();
