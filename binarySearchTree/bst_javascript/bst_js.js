@@ -1,4 +1,4 @@
-var Node = require('./node');
+var Node = require('./node_js');
 
 var BST = (function () {
   function BST() {
