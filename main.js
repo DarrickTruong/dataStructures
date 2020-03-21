@@ -63,3 +63,13 @@ for (var i = 0; i < names.length; i++) {
     betterHashTable.linkPut(names[i]);
 }
 betterHashTable.showDistribution();
+
+let Trie = require('./trie');
+var trie = new Trie(); 
+trie.insert("ANDY", "amazing"); 
+trie.insert("ANDREW", "awesome"); 
+trie.insert("ANT", "what");
+
+console.log(trie.get("ANDY")); 
+console.log(trie.get("ANDREW")); 
+console.log(trie.get("ANT"));
