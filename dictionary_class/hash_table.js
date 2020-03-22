@@ -32,6 +32,12 @@ var HashTable = (function(){
 
   HashTable.prototype.trieBuilt = function() {
     // your code here
+    let first = this.table[0];
+    if (first === undefined || first.constructor.name != "Trie") {
+      return false;
+    } else {
+      return true
+    }
   }
 
   HashTable.prototype.simpleHash = function(data) {
@@ -63,9 +69,20 @@ var HashTable = (function(){
       this.table[loc] = data;
     }
   }
-
+    // ???
   HashTable.prototype.triePut = function(key, value) {
     // your code here
+    if (this.trieBuilt() === false) {
+      this.buildTries();
+    }
+
+    var location = this.simpleHash(key);
+    if (this.table[location] == undefined) {
+      var trie = new Trie(location);
+      this.table[location].push(key);
+    } else {
+      this.table[location] = 
+    }
   }
 
   HashTable.prototype.trieGet = function(key) {
