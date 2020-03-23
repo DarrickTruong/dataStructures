@@ -35,10 +35,10 @@ var HashTable = (function () {
     // your code here
     let first = this.table[0];
     if (first === undefined || first.constructor.name != "Trie") {
-      console.log('in false');
+      // console.log('in false');
       return false;
     } else {
-      console.log('in true');
+      // console.log('in true');
       return true
     }
   }
@@ -82,29 +82,30 @@ var HashTable = (function () {
     var pointer = this.table;
     for (let i = 0; i < pointer.length; i++) {
       if (pointer[i].root.chr == key[0]) {
-        pointer = pointer[i].root;
-        console.log('new pointer', pointer);
+        pointer = pointer[i];
+        // console.log('new pointer', pointer);
       }
     }
 
-    for (let i = 0; i < key.length; i++) {
+    for (let i = 1; i < key.length; i++) {
       var found = false;
-      for (let j = 0; j < pointer.next.length; j++) {
-        if (pointer.next[j].chr === key[i]) {
-          console.log('in found');
-          pointer = pointer.next[j];
+      for (let j = 0; j < pointer.root.next.length; j++) {
+        // console.log(pointer.root.next[j].root.chr, key[i]);
+        if (pointer.root.next[j].root.chr === key[i]) {
+          // console.log('in found');
+          pointer = pointer.root.next[j];
           found = true;
         }
       }
       if (found === false) {
         let trie = new Trie(key[i]);
-        pointer.next.push(trie);
-        // pointer = pointer.next;
-        console.log('pointer.next', pointer.next)
+        pointer.root.next.push(trie);
+        pointer = trie;
+        // console.log('pointer', pointer)
       }
     }
-    pointer.value = value;
-    console.log(pointer)
+    pointer.root.value = value;
+    // console.log('end', pointer)
   }
 
   HashTable.prototype.trieGet = function (key) {
@@ -113,14 +114,17 @@ var HashTable = (function () {
     var pointer = this.table;
     for (let i = 0; i < pointer.length; i++) {
       if (pointer[i].root.chr == key[0]) {
-        pointer = pointer[i].root;
+        pointer = pointer[i];
       }
     }
-    for (let i = 0; i < key.length; i++) {
+    // console.log('begin', pointer);
+    for (let i = 1; i < key.length; i++) {
       var found = false;
-      for (let j = 0; j < pointer.next.length; j++) {
-        if (pointer.next[i].chr == key[i]) {
-          pointer = pointer.next[i];
+      for (let j = 0; j < pointer.root.next.length; j++) {
+        // console.log(j, pointer.root.next[j].root.chr, key[i]);
+        if (pointer.root.next[j].root.chr == key[i]) {
+          // console.log('in found');
+          pointer = pointer.root.next[j];
           found = true
         }
       }
@@ -129,9 +133,9 @@ var HashTable = (function () {
         break
       }
     }
-    console.log('this pointer', pointer)
-    if (pointer && pointer.value) {
-      return pointer.value
+    // console.log('this pointer', pointer)
+    if (pointer && pointer.root.value) {
+      return pointer.root.value
     } else {
       return "Not Found"
     }
