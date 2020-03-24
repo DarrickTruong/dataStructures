@@ -21,7 +21,7 @@ const MinHeap = (function () {
     }
 
     MinHeap.prototype.remove = function remove() {
-        
+
         let temp = this.heap[1];
         let last = this.heap.length - 1;
         this.heap[1] = this.heap[last];
@@ -32,7 +32,7 @@ const MinHeap = (function () {
         let children = Math.floor(1 * 2);
         let run = true;
         while (run) {
-            console.log(this.heap[parent], this.heap[children], this.heap[children+1]);
+            console.log(this.heap[parent], this.heap[children], this.heap[children + 1]);
             if (this.heap[parent] > this.heap[children] && this.heap[parent] > this.heap[children + 1]) {
                 if (this.heap[children] < this.heap[children + 1]) {
                     temp = this.heap[parent];
@@ -52,18 +52,38 @@ const MinHeap = (function () {
                 this.heap[parent] = this.heap[children];
                 this.heap[children] = temp;
                 parent = children;
-                children = Math.floor(parent*2);
-            } else if (this.heap[parent] > this.heap[children+1]) {
+                children = Math.floor(parent * 2);
+            } else if (this.heap[parent] > this.heap[children + 1]) {
                 temp = this.heap[parent];
-                this.heap[parent] = this.heap[children+1];
-                this.heap[children+1] = temp;
-                parent = children+1;
-                children = Math.floor(parent*2);
+                this.heap[parent] = this.heap[children + 1];
+                this.heap[children + 1] = temp;
+                parent = children + 1;
+                children = Math.floor(parent * 2);
             } else {
                 run = false;
             }
         }
         return popped;
+    }
+    MinHeap.prototype.heapify = function heapify(arr) {
+        if (arr[0] != undefined) {
+            // console.log('in');
+            arr.push(undefined);
+            let temp = arr[0];
+            arr[0] = arr[arr.length - 1];
+            arr[arr.length - 1] = temp;
+        }
+        for (let i = 0; i < arr.length-1 ; i++) {
+            let children = (arr.length - 1 - i);
+            let parent = Math.floor(children/2)
+            console.log(arr[parent], arr[children]);
+            if (arr[parent] > arr[children]) {
+                let temp = arr[parent];
+                arr[parent] = arr[children];
+                arr[children] = temp;
+            }
+        }
+        return arr;
     }
     return MinHeap
 })();

@@ -24,3 +24,9 @@ minHeap.insert(10);
 console.log(minHeap);
 console.log(minHeap.remove());
 console.log(minHeap);
+
+
+const MinHeap = require('./heaps');
+let minHeap = new MinHeap();
+let arr = [20,3,8,14,9,6,2];
+console.log(minHeap.heapify(arr));
