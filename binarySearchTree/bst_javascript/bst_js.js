@@ -123,26 +123,26 @@ var BST = (function () {
 
   BST.prototype.delete = function (data) {
     var remove = function (node, data) {
-      if (this.root == null) {
+      if (node === null) {
         return null
       }
-      if (data == node.data) {
+      if (data === node.data) {
         // node has no children
-        if (node.left == null && node.right == null) {
+        if (node.left === null && node.right ===null) {
           return null;
           // node has one child
-        } else if (node.left == null) {
+        } else if (node.left === null) {
           return node.right;
-        } else if (node.right == null) {
+        } else if (node.right === null) {
           return node.left;
         }
         // node has two children
         var pointer = node.right;
-        while (pointer.left != null) {
+        while (pointer.left) {
           pointer = pointer.left;
         }
-        node.data = pointerNode.data;
-        node.right = remove(node.right, pointerNode.data);
+        node.data = pointer.data;
+        node.right = remove(node.right, pointer.data);
       }
       else if (data < node.data) {
         node.left = remove(node.left, data);

@@ -11,7 +11,7 @@ const MinHeap = (function () {
         let newInd = this.heap.length - 1;
         let parent = Math.floor(newInd / 2);
         while (this.heap[newInd] < this.heap[parent]) {
-            console.log(newInd, this.heap[newInd], parent, this.heap[parent]);
+            // console.log(newInd, this.heap[newInd], parent, this.heap[parent]);
             let temp = this.heap[newInd];
             this.heap[newInd] = this.heap[parent];
             this.heap[parent] = temp;
@@ -32,9 +32,9 @@ const MinHeap = (function () {
         let children = Math.floor(1 * 2);
         let run = true;
         while (run) {
-            console.log('in remove', this.heap, 'parent', this.heap[parent], 'children', this.heap[children], this.heap[children + 1]);
+            // console.log('in remove', this.heap, 'parent', this.heap[parent], 'children', this.heap[children], this.heap[children + 1]);
             if (this.heap[parent] > this.heap[children] && this.heap[parent] > this.heap[children + 1]) {
-                console.log('in both');
+                // console.log('in both');
                 if (this.heap[children] < this.heap[children + 1]) {
                     temp = this.heap[parent];
                     this.heap[parent] = this.heap[children];
@@ -49,21 +49,21 @@ const MinHeap = (function () {
                     children = Math.floor(parent * 2);
                 }
             } else if (this.heap[parent] > this.heap[children]) {
-                console.log('in children');
+                // console.log('in children');
                 temp = this.heap[parent];
                 this.heap[parent] = this.heap[children];
                 this.heap[children] = temp;
                 parent = children;
                 children = Math.floor(parent * 2);
             } else if (this.heap[parent] > this.heap[children + 1]) {
-                console.log('in children + 1');
+                // console.log('in children + 1');
                 temp = this.heap[parent];
                 this.heap[parent] = this.heap[children + 1];
                 this.heap[children + 1] = temp;
                 parent = children + 1;
                 children = Math.floor(parent * 2);
             } else {
-                console.log('exit', this.heap);
+                // console.log('exit', this.heap);
                 run = false;
             }
         }
@@ -80,7 +80,7 @@ const MinHeap = (function () {
         for (let i = 0; i < Math.floor(arr.length-1) ; i++) {
             let children = (arr.length - 1 - i);
             let parent = Math.floor(children/2)
-            console.log('in heapify', arr[parent], arr[children]);
+            // console.log('in heapify', arr[parent], arr[children]);
             if (arr[parent] > arr[children]) {
                 let temp = arr[parent];
                 arr[parent] = arr[children];
@@ -95,7 +95,7 @@ const MinHeap = (function () {
         for (let i = 0; i < arr.length; i++) {
             heaped.insert(arr[i]);
         }
-        console.log(heaped.heap)
+        // console.log(heaped.heap)
         let sorted = [];
         while (heaped.heap.length > 1) {
             let lowest = heaped.remove();
