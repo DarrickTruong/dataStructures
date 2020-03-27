@@ -11,8 +11,46 @@ Big O notation and Time complexity
 "we can buy memory, but you can't buy time"
 - Fast runtime is better than efficient memory usage
 
+Big O Shorthands
+- Arithmetic operations are constant
+- Variable assignment is constant
+- Accessing elements in an array (by index) or object (by key) is constant
+- In a loop, the complexity is the length of the loop times the complexity of whatever happens inside of the loop
+
+Big O of objects
+- Objects are great when you don't need any ordering. 
+- O(1) Fast insertion, removal, access
+- O(n) Searching
+
+Big O of arrays
+- When you need order (not always best for order)
+- O(1) lookup by index
+- O(1) insert by index and .push()
+- O(n) searching
 
 
+
+Algorithms and Problem Solving Patterns
+
+What is an algorithm?
+- A process or set of steps to accomplish a certain task
+    + Understang the problem 
+        - Can you restate the problem in your own words?
+        - What are the inputs that go into the problem
+        - What are the outputs that should come from the solution
+        - Can the outputs be determined from the inputs? Do you have enough information to solve the problem
+        - What should i label the important pieces of data that are a part of the problem
+    + Exploring concrete examples
+        - Helps you determine if your code works the way it should
+        - Start with simple examples and progress towards more complex
+        - What about wrong or invalid inputs?
+    + Break it down
+        - Comments of the steps or pseudocode 
+        - Communicate what you are doing. Interviewers want to see it. Might give you hints
+
+How do you improve algorithm problem solving?
+- Devise a plan for solving problems
+- Master common problem solving Pattern
 
 
 Linked list
