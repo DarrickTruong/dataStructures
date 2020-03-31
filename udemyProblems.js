@@ -1,3 +1,7 @@
+// ********************** Frequency Counter *************************
+
+
+
 // Write a function called "same", which accepts two arrays. 
 // the function should return true if every value in the array 
 // has it's corresponding value squared in the second array. 
@@ -83,6 +87,11 @@ for ( let i = 0; i < 10; i++ ) {
 
 
 
+
+// ********************** Multiple Pointers *************************
+
+
+
 // Write a function called "sumZero" which accepts a sorted array of integers. the function should find the first pair where the sum is 0. return an array that includes both values that sum to zero or undefined if a pair does not exist 
 function sumZero( arr ) {
     // two pointers on each end
@@ -133,3 +142,56 @@ console.log( countUnique( [1, 1, 1, 1, 2] ) );
 console.log( countUnique( [1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13] ) );
 console.log( countUnique( [] ) );
 console.log( countUnique( [-2, -1, -1, 0, 1] ) );
+
+
+
+
+
+
+// ********************** Sliding Window *************************
+
+
+
+// Write a function called maxSubarraySum which accepts an array of integers and a number called n. The function should calculate the maximum sum of n consecutive elemenets in the array.
+
+function maxSubarraySum(arr,n) {
+    // need a maxSum and a tempSum variable
+    // create the first maxSum with a for loop of n iterations
+    // use the sliding window to iterate throw the loop one time, adding one the next value and subtracting the first value of the window. 
+    // make sure not to run out loop outside the arr (arr.length - n)
+    // What if negative integers?
+    // what if empty arr?
+    // return maxSum
+    if (arr.length < 1 || arr.length < n) {
+        return null
+    }
+
+    let maxSum = -Infinity;
+    let tempSum = 0;
+    // set maxSum
+    for (let i=0; i < n; i++) {
+        tempSum += arr[i];
+    }
+    maxSum = Math.max(maxSum, tempSum);
+    // sliding window 
+    for(let i = n; i < arr.length ; i++){
+        tempSum = tempSum + arr[i] - arr[i-n];
+        maxSum = Math.max(maxSum, tempSum);
+    }
+    return maxSum
+}
+console.log(maxSubarraySum([1,2,5,2,8,1,5],2));
+console.log(maxSubarraySum([1,2,5,2,8,1,5],4));
+console.log(maxSubarraySum([4,2,1,6],1));
+console.log(maxSubarraySum([4,2,1,6,2],4));
+console.log(maxSubarraySum([],4));
+
+
+
+
+
+
+
+// ********************** Divide and Conquer *************************
+
+

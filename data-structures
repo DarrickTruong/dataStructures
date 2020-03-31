@@ -67,9 +67,20 @@ How do you improve algorithm problem solving?
 
 - Master common problem solving Patterns
     + Common Patterns
-        - Frequency Patterns
+        - Frequency Counter Patterns
             + Uses objects or sets to collect values/frequencies of values
-            + Useful for comparing multiple pieces of data. IE. Anagrams, check if something is in other thing.
+            + Useful for comparing multiple pieces of data. IE. Anagrams, check if a value is contained inside another set of values.
+            + should be O(n) time
+        - Multiple Pointers
+            + Creating pointers or values that correspond to an index or position and move towards the beginning, end, or middle based on a certain condition
+            + Very efficient for solving problems with minimal space complexity as well
+        - Sliding Window
+            + This pattern involves creating a Window which can either by an array or number from one position to another 
+            + Depending on a certain condition, the window either increases or closes (and a new window is created)
+            + Very useful for keeping track of a subset of data in an array/string etc.
+        - Divide and Conquer
+            + This pattern involves dividting a data set into smaller chunks and then repeating a process with a subset of data.
+            + this pattern can tremendously decrease time complexity 
 
 
 
