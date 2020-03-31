@@ -34,10 +34,14 @@ Algorithms and Problem Solving Patterns
 
 What is an algorithm?
 - A process or set of steps to accomplish a certain task
+
+
+How do you improve algorithm problem solving?
+- Devise a plan for solving problems
     + Understang the problem 
         - Can you restate the problem in your own words?
         - What are the inputs that go into the problem
-        - What are the outputs that should come from the solution
+        - What are the outputs that should come from the solution. What to return?
         - Can the outputs be determined from the inputs? Do you have enough information to solve the problem
         - What should i label the important pieces of data that are a part of the problem
     + Exploring concrete examples
@@ -47,10 +51,28 @@ What is an algorithm?
     + Break it down
         - Comments of the steps or pseudocode 
         - Communicate what you are doing. Interviewers want to see it. Might give you hints
+        - Include steps about edge cases, how to handle wrong/null inputs, and what to return
+    + Solve/Simplify
+        - If you get stuck, simplify and solve the simpler algorithm
+        - If multiple solutions are available, ask the interviewer if they like a certain method over another
+    + Refactoring your code
+        - Can you check the result?
+        - Can you derive the result differently?
+        - Can you understand it at a glance?
+        - Can you use the result or method for some other problem?
+        - Can you improve the performance of your solution?
+        - Can you think of other ways to refactor?
+        - How have other people solved this problem?
+        - Ask the interviewer... What did I miss? How can I make this better?
 
-How do you improve algorithm problem solving?
-- Devise a plan for solving problems
-- Master common problem solving Pattern
+- Master common problem solving Patterns
+    + Common Patterns
+        - Frequency Patterns
+            + Uses objects or sets to collect values/frequencies of values
+            + Useful for comparing multiple pieces of data. IE. Anagrams, check if something is in other thing.
+
+
+
 
 
 Linked list

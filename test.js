@@ -2,10 +2,14 @@ let dictionary = {
     "a":1
 }
 
-console.log(dictionary['a']+=1)
+console.log(dictionary['a']++)
 
-let string = "1234567890";
+let string = "A.B,C;D'E[F]G\1=2-3";
 
-for (let i = 0; i < string.length; i++) {
-    console.log(string.charAt(i))
+for (let char of string){
+    char = char.toLowerCase()
+    if (/[a-z0-9]/.test(char)) {
+    console.log(char)
+
+    }
 }
