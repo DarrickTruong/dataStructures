@@ -243,7 +243,7 @@ function findLongestSubstring( string ) {
 
     for ( let i = 0; i < string.length; i++ ) {
         let char = string[i];
-        console.log(charDict);
+        
         if (charDict[char]) {
             start = Math.max(start, charDict[char]);
         }
