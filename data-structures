@@ -79,8 +79,22 @@ How do you improve algorithm problem solving?
             + Depending on a certain condition, the window either increases or closes (and a new window is created)
             + Very useful for keeping track of a subset of data in an array/string etc.
         - Divide and Conquer
-            + This pattern involves dividting a data set into smaller chunks and then repeating a process with a subset of data.
-            + this pattern can tremendously decrease time complexity 
+            + This pattern involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
+            + this pattern can tremendously decrease time complexity
+        - Recursion
+            + Object traversal, See it with more complex data structures
+            + Sometimes cleaner solution to iteration
+            + Call Stack
+                - "First in Last Out"
+                - pop from the top/back
+            + Two essential components to Recursion
+                - Base case - Condition where the recursion stops
+                - Recursive call with different/altered inputs
+                - No basecase or not altering the inputs can cause Stack Overflow
+            + Tips for recursion
+                - For arrays, use methods like slice, the spread operator, and concat that make copies of arryas so you do not mutate them
+                - Strings are immutable so you will need to use methods like slice, substr, or substring to make copies of Strings
+                - To make copies of objects use Object.assign or the spread operator
 
 
 

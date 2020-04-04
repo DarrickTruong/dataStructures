@@ -195,3 +195,101 @@ console.log(maxSubarraySum([],4));
 // ********************** Divide and Conquer *************************
 
 
+
+
+
+
+// ************************** Recursion **********************************
+
+// write a function called power which accepts a base and an exponent. the function should return the power of the base to the exponent. this function should mimic the functionality of Math.pow() do not worry about negative bases and exponents
+
+function power(base, exponent) {
+    if (exponent === 0) return 1;
+    exponent--;
+    return (base * power(base, exponent));
+}
+
+console.log(power(2, 3));
+console.log(power(5, 2));
+console.log(power(10, 3));
+
+
+
+// write a function factorial which accepts a number and returns the factorial of that number. a factorial is the product of an integer and all the integers below it; e.g., factorial four (4!) is equal to 24, because 4*3*2*1 equals 24. factorial zero (0!) is always 1. 
+
+function factorial(number) {
+    if (number === 0) return 1;
+    return (number * factorial(number-1));
+}
+
+console.log(factorial(1));
+console.log(factorial(2));
+console.log(factorial(4));
+console.log(factorial(7))
+
+
+
+//  write a function called productOfArray which takes an array of numbers and returns the product of them all.
+
+function productOfArray(arr) {
+    let product = 1;
+
+    function helper(nums) {
+        if (nums.length < 1){
+            return
+        }
+        // console.log(nums);
+        product *= nums[0];
+
+        let numbers = nums.splice(1);
+        helper(numbers);
+    }
+    helper(arr);
+    return product;
+}
+console.log(productOfArray([1,2,3]));
+console.log(productOfArray([1,2,3,10]));
+
+
+
+// write a function called recursiveRange which accepts a number and adds up all the numbers from 0 to the number passed to the function 
+
+function recursiveRange(number) {
+    let total = 0;
+    function helper(add){
+        if (add > number) {
+            return
+        }
+        total += add
+        helper(add+1)
+    }
+    helper(1);
+    return total
+}
+
+console.log(recursiveRange(6));
+console.log(recursiveRange(10));
+
+function recursiveRange(number) {
+    function helper(add){
+        if (add === number) {
+            return number
+        }
+        return add + helper(add+1)
+    }
+    return helper(1)
+}
+console.log(recursiveRange(6));
+console.log(recursiveRange(10));
+
+
+// recursive fibonacci. write a recursive function called fib which accepts a number and returns the nth number in the fibonacci sequence. recall that the fibonacci sequence is the sequence of whole numbers 1,1,2,3,5,8 which starts with 1 and 1 and where every number thereafter is equal to the sum of the previous two numbers
+function fib(nth) {
+    if (nth === 0) return 0;
+    if (nth === 1) return 1;
+    return fib(nth-1) + fib(nth-2)
+}
+console.log(fib(4)); // 3
+console.log(fib(10)); // 55
+console.log(fib(28)); // 317811
+console.log(fib(35)); // 9227465
