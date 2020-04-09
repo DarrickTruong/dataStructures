@@ -243,11 +243,11 @@ function findLongestSubstring( string ) {
 
     for ( let i = 0; i < string.length; i++ ) {
         let char = string[i];
-        
-        if (charDict[char]) {
-            start = Math.max(start, charDict[char]);
+
+        if ( charDict[char] ) {
+            start = Math.max( start, charDict[char] );
         }
-        count = Math.max(count, i - start + 1);
+        count = Math.max( count, i - start + 1 );
         charDict[char] = i + 1;
     }
 
@@ -262,3 +262,95 @@ console.log( findLongestSubstring( "rithmschool" ) );
 console.log( findLongestSubstring( "thisisawesome" ) );
 console.log( findLongestSubstring( "thecatinthehat" ) );
 console.log( findLongestSubstring( "bbbb" ) );
+
+
+// ******************* Recursion *********************
+
+// Write a recursion function called reverse which accepts a string and returns a new string in reverse
+
+function reverse( string ) {
+    let i = string.length - 1;
+    let answer = "";
+
+    function helper( word, index ) {
+        console.log( "inhelper", index )
+        if ( index < 0 ) {
+            return answer
+        }
+        while ( index >= 0 ) {
+            answer += word[index];
+            console.log( word[index] );
+            index--;
+            console.log( "index", index );
+            return helper( word, index );
+        }
+    }
+
+    return helper( string, i );
+}
+console.log( reverse( "awesome" ) );
+console.log( reverse( "rithmschool" ) );
+
+function reverse( str ) {
+    if ( str.length <= 1 ) return str;
+    return reverse( str.slice( 1 ) ) + str[0];
+}
+console.log( reverse( "awesome" ) );
+console.log( reverse( "rithmschool" ) );
+
+
+// write a recursive function called isPalindrome which returns true if the string passed to it is a palindrome (reads the same forward and backward). otherwise it returns false
+
+function isPalindrome( string ) {
+    if ( string.length <= 1 ) return true;
+    // console.log(string.charAt(0), string.charAt(string.length-1));
+    if ( string.charAt( 0 ) === string.charAt( string.length - 1 ) ) {
+        // console.log(string.slice(1, (string.length-1)));
+        return isPalindrome( string.slice( 1, ( string.length - 1 ) ) );
+    } else {
+        return false
+    }
+}
+
+console.log( isPalindrome( "tacocat" ) );
+console.log( isPalindrome( "123321" ) );
+console.log( isPalindrome( 'awesome' ) ); // false
+console.log( isPalindrome( 'foobar' ) ); // false
+console.log( isPalindrome( 'tacocat' ) ); // true
+console.log( isPalindrome( 'amanaplanacanalpanama' ) ); // true
+console.log( isPalindrome( 'amanaplanacanalpandemonium' ) ); // false
+
+
+// write a recurisve function called someRecursive which accepts an array an a callback. the function returns true if a single value in the array returns true when passed to the callback. otherwise it returns false
+
+const isOdd = val => ( ( val % 2 ) != 0 ) ? true : false;
+function someRecursive( arr, callback ) {
+    if ( arr.length === 0 ) return false;
+    if ( callback( arr[0] ) ) return true;
+    return someRecursive( arr.slice( 1 ), callback );
+
+}
+console.log( someRecursive( [4, 6, 8] ), val => val > 10 );
+console.log( someRecursive( [1, 2, 3, 4] ), isOdd( val ) );
+console.log( someRecursive( [4, 6, 8, 9] ), isOdd );
+console.log( someRecursive( [4, 6, 8] ), isOdd );
+
+
+// write a recursive function called flatten which accepts an array of arrays and returns a new array with all values flattened 
+
+function flatten( arr ) {
+    let newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            newArr = newArr.concat(flatten(arr[i]));
+        } else {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+console.log(flatten([1, 2, 3, [4, 5] ])); // [1, 2, 3, 4, 5]
+console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
+console.log(flatten([[1],[2],[3]])); // [1,2,3]
+console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3
