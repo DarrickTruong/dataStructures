@@ -341,16 +341,92 @@ console.log( someRecursive( [4, 6, 8] ), isOdd );
 function flatten( arr ) {
     let newArr = [];
 
-    for (let i = 0; i < arr.length; i++) {
-        if (Array.isArray(arr[i])) {
-            newArr = newArr.concat(flatten(arr[i]));
+    for ( let i = 0; i < arr.length; i++ ) {
+        if ( Array.isArray( arr[i] ) ) {
+            newArr = newArr.concat( flatten( arr[i] ) );
         } else {
-            newArr.push(arr[i]);
+            newArr.push( arr[i] );
         }
     }
     return newArr;
 }
-console.log(flatten([1, 2, 3, [4, 5] ])); // [1, 2, 3, 4, 5]
-console.log(flatten([1, [2, [3, 4], [[5]]]])); // [1, 2, 3, 4, 5]
-console.log(flatten([[1],[2],[3]])); // [1,2,3]
-console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])); // [1,2,3
+console.log( flatten( [1, 2, 3, [4, 5]] ) ); // [1, 2, 3, 4, 5]
+console.log( flatten( [1, [2, [3, 4], [[5]]]] ) ); // [1, 2, 3, 4, 5]
+console.log( flatten( [[1], [2], [3]] ) ); // [1,2,3]
+console.log( flatten( [[[[1], [[[2]]], [[[[[[[3]]]]]]]]]] ) ); // [1,2,3
+
+
+// write a recursion function called capitalizeFirst. given an array of strings, capitalize the first letter of each string in the array.
+
+function capitalizeFirst( arr ) {
+    if ( arr.length === 0 ) {
+        return
+    } else {
+        console.log( arr );
+        arr[0] = arr[0].charAt( 0 ).toUpperCase() + arr[0].slice( 1 );
+        capitalizeFirst( arr.slice( 1 ) );
+    }
+    return arr
+}
+console.log( capitalizeFirst( ['car', 'taco', 'banana'] ) ); // ['Car','Taco','Banana']
+
+function capitalizeFirst( array ) {
+    if ( array.length === 1 ) {
+        return [array[0][0].toUpperCase() + array[0].substr( 1 )];
+    }
+
+    const res = capitalizeFirst( array.slice( 0, -1 ) );
+    console.log( 'first', array.slice( 0, -1 ) );
+
+    const string = array.slice( array.length - 1 )[0][0].toUpperCase() + array.slice( array.length - 1 )[0].substr( 1 );
+    res.push( string );
+    console.log( 'after', res );
+
+    return res;
+}
+console.log( capitalizeFirst( ['car', 'taco', 'banana'] ) ); // ['Car','Taco','Banana']
+
+
+// write a recursive function called nestedEvenSum. Return the sum of all even numbers in an object which may contain nested objects. 
+
+const isPlainObject = function ( obj ) {
+    return Object.prototype.toString.call( obj ) === '[object Object]';
+}
+
+function nestedEvenSum( object1 ) {
+    let sum = 0;
+    function helper( object2 ) {
+        for ( let key in object2 ) {
+            if ( object2[key] % 2 === 0 ) {
+                sum += object2[key];
+            }
+            if ( isPlainObject( object2[key] ) ) {
+                helper( object2[key] )
+            }
+        }
+    }
+    helper(object1)
+    return sum;
+}
+var obj1 = {
+  outer: 2,
+  obj: {
+    inner: 2,
+    otherObj: {
+      superInner: 2,
+      notANumber: true,
+      alsoNotANumber: "yup"
+    }
+  }
+}
+
+var obj2 = {
+  a: 2,
+  b: {b: 2, bb: {b: 3, bb: {b: 2}}},
+  c: {c: {c: 2}, cc: 'ball', ccc: 5},
+  d: 1,
+  e: {e: {e: 2}, ee: 'car'}
+};
+
+console.log(nestedEvenSum(obj1)); // 6
+console.log(nestedEvenSum(obj2)); // 10
