@@ -405,28 +405,121 @@ function nestedEvenSum( object1 ) {
             }
         }
     }
-    helper(object1)
+    helper( object1 )
     return sum;
 }
 var obj1 = {
-  outer: 2,
-  obj: {
-    inner: 2,
-    otherObj: {
-      superInner: 2,
-      notANumber: true,
-      alsoNotANumber: "yup"
+    outer: 2,
+    obj: {
+        inner: 2,
+        otherObj: {
+            superInner: 2,
+            notANumber: true,
+            alsoNotANumber: "yup"
+        }
     }
-  }
 }
 
 var obj2 = {
-  a: 2,
-  b: {b: 2, bb: {b: 3, bb: {b: 2}}},
-  c: {c: {c: 2}, cc: 'ball', ccc: 5},
-  d: 1,
-  e: {e: {e: 2}, ee: 'car'}
+    a: 2,
+    b: { b: 2, bb: { b: 3, bb: { b: 2 } } },
+    c: { c: { c: 2 }, cc: 'ball', ccc: 5 },
+    d: 1,
+    e: { e: { e: 2 }, ee: 'car' }
 };
 
-console.log(nestedEvenSum(obj1)); // 6
-console.log(nestedEvenSum(obj2)); // 10
+console.log( nestedEvenSum( obj1 ) ); // 6
+console.log( nestedEvenSum( obj2 ) ); // 10
+
+
+// write a recursive funtion called capitalizedWords. given an array of words, return a new array containing each word capitalized.
+
+function capitalizedWords( arr ) {
+    if ( arr.length === 1 ) {
+        return [arr[0].toUpperCase()];
+    }
+    let res = capitalizedWords( arr.slice( 0, -1 ) );
+    res.push( arr.slice( arr.length - 1 )[0].toUpperCase() );
+    return res;
+}
+console.log( capitalizedWords( ['i', 'am', 'learning', 'recursion'] ) );
+
+
+
+// write a function called stringifyNumbers which takes in an object and finds all of the values which are numbers and converts them to strings. recursion would be a great way to solve this. 
+
+
+function stringifyNumbers( object1 ) {
+    let newObj = {};
+    for ( let key in object1 ) {
+        console.log( object1[key], typeof object1[key] );
+        if ( typeof object1[key] === "number" ) {
+            newObj[key] = object1[key].toString();
+        } else if ( typeof object1[key] === "object" && !Array.isArray( object1[key] ) ) {
+            newObj[key] = stringifyNumbers( object1[key] )
+        } else if ( Array.isArray( object1[key] ) ) {
+            newObj[key] = [];
+            for ( let i = 0; i < object1[key].length; i++ ) {
+                if ( typeof object1[key][i] === 'number' ) {
+                    newObj[key][i] = object1[key][i].toString();
+                } else {
+                    newObj[key][i] = object1[key][i];
+                }
+            }
+        } else {
+            console.log( 'in else' )
+            newObj[key] = object1[key];
+        }
+    }
+    return newObj;
+}
+
+let obj = {
+    num: 1,
+    test: [1, 2, "hello", true],
+    data: {
+        val: 4,
+        info: {
+            isRight: true,
+            random: 66
+        }
+    }
+}
+
+console.log( stringifyNumbers( obj ) );
+
+
+// write a function called collectStrings which accepts an object and returns an array of all the values in the object that have a typeof string
+
+function collectStrings( object1 ) {
+    let answer = [];
+
+    function helper( object2 ) {
+        for ( let key in object2 ) {
+            if ( typeof object2[key] === 'string' ) {
+                answer.push(object2[key]);
+            } else if ( typeof object2[key] === 'object') {
+                helper(object2[key])
+            }
+        }
+    }
+    helper(object1)
+    return answer
+}
+const obj = {
+    stuff: "foo",
+    data: {
+        val: {
+            thing: {
+                info: "bar",
+                moreInfo: {
+                    evenMoreInfo: {
+                        weMadeIt: "baz"
+                    }
+                }
+            }
+        }
+    }
+}
+
+console.log(collectStrings(obj));
