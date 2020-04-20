@@ -96,6 +96,10 @@ How do you improve algorithm problem solving?
                 - Strings are immutable so you will need to use methods like slice, substr, or substring to make copies of Strings
                 - To make copies of objects use Object.assign or the spread operator
 
+- Searching Algorithms
+    + Linear searching
+        - Looping, going index to index
+
 
 
 
