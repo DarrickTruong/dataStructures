@@ -99,6 +99,44 @@ How do you improve algorithm problem solving?
 - Searching Algorithms
     + Linear searching
         - Looping, going index to index
+    + Divide and Conquer
+        - Binary Searching
+
+- Sorting Algorithms
+    + Into Sorting Algos - O(n^2)
+        - Bubble Sorting
+            - Time complexity: Best O(n), on average O(n^2)
+            - Space complexity: 0(1)
+            - start at index 0, and iterate to the last index, moving the largest number to the back on the first run thru the loop
+            - optimize with a boolean noSwap
+        - Selection Sorting
+            - Time complexity: Best O(n), on average O(n^2)
+            - Space complexity: 0(1)
+            - Start at index 0, and iterate to the last index looking and selecting the lowest number. place lowest number at the front.
+            - optimize by only swapping when index is diff from i variable
+        - Insertion Sorting
+            - Time complexity: Best O(n), on average O(n^2)
+            - Space complexity: 0(1)
+            - Best use case: Good for sorting information coming in live (with a preexisting presorted array). Just run thru the loop once
+            - Start at index 1, and compare with index 0, if lower, swap...
+            - Starts sorting left side of array, and places then inserts the number in the correct position
+
+    + Intermediate Sorting algos - O(n log n)
+        - Merge Sorting
+            + Time complexity: Best and average time O(nlogn)
+            + Space complexity: O(n), bc creating new arrays equal to the length of the original array
+            + Uses two functions
+            + Divide and Conquer
+        - Quick Sorting
+            + Similar to Merge Sorting
+            + Use a Pivot/Partition helper function
+
+
+
+
+
+
+
 
 
 

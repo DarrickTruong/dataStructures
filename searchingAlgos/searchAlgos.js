@@ -19,8 +19,8 @@ console.log(linearSearch([100],200));
 
 // write a function called binarySearch which accepts a sorted array and a value and returns the index at which the value exists. otherwise, return -1
 
-function binarySearch(arr, value, start, end) {
-    if (arr.length === 0) return -1;
+function binarySearch(arr, value, start = 0, end = arr.length-1) {
+    if (start > end || end < start) return -1;
 
     let mid = Math.floor((start+end)/2);
 
@@ -33,8 +33,8 @@ function binarySearch(arr, value, start, end) {
     }
 }
 let thisArr = [1,2,3,4,5];
-console.log(binarySearch(thisArr, 1, 0, thisArr.length-1));
-console.log(binarySearch(thisArr, 2, 0, thisArr.length-1));
-console.log(binarySearch(thisArr, 3, 0, thisArr.length-1));
-console.log(binarySearch(thisArr, 4, 0, thisArr.length-1));
-console.log(binarySearch(thisArr, 5, 0, thisArr.length-1));
+console.log(binarySearch(thisArr, 0));
+console.log(binarySearch(thisArr, 2));
+console.log(binarySearch(thisArr, 3));
+console.log(binarySearch(thisArr, 4));
+console.log(binarySearch(thisArr, 5));
