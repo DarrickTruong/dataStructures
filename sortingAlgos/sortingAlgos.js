@@ -198,8 +198,8 @@ console.log( mergeSort( [1, 39, 10, 2, 4, 8, 5, 20, 15, 10] ) )
 
 // Quick Sort
 
-const quickSort = ( arr, left = 0, right = arr.length-1 ) => {
-    const pivotHelper = ( arr, start = 0, end = arr.length-1 ) => {
+const quickSort = ( arr, left = 0, right = arr.length - 1 ) => {
+    const pivotHelper = ( arr, start = 0, end = arr.length - 1 ) => {
         const swap = ( arr, idx1, idx2 ) => {
             [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
         }
@@ -231,4 +231,68 @@ const quickSort = ( arr, left = 0, right = arr.length-1 ) => {
 }
 console.log( quickSort( [4, 8, 2, 1, 5, 7, 6, 3] ) )
 
+
+
+// Radix Sort
+
+// Radix Helper Functions
+const getDigit = ( num, place ) => {
+    let digit = Math.floor( ( Math.abs( num ) / Math.pow( 10, place ) ) % 10 );
+    return digit
+}
+const digitCount = ( num ) => {
+    let count = 0;
+    let numString = num.toString();
+    for ( let i = 0; i < numString.length; i++ ) {
+        count++
+    }
+    return count;
+}
+const digitCount = ( num ) => {
+        if ( num === 0 ) return 1;
+        return Math.floor( Math.log10( Math.abs( num ) ) ) + 1;
+    }
+// Faster time and less space complexity
+const mostDigits = ( nums ) => {
+        let maxDigits = 0;
+        for ( let i = 0; i < nums.length; i++ ) {
+            maxDigits = Math.max( maxDigits, digitCount( nums[i] ) );
+        }
+        return maxDigits;
+    }
+
+
+const radixSort = ( nums ) => {
+    const getDigit = ( num, place ) => {
+    let digit = Math.floor( ( Math.abs( num ) / Math.pow( 10, place ) ) % 10 );
+    return digit
+    }
+    const digitCount = ( num ) => {
+        if ( num === 0 ) return 1;
+        return Math.floor( Math.log10( Math.abs( num ) ) ) + 1;
+    }
+    const mostDigits = ( nums ) => {
+        let maxDigits = 0;
+        for ( let i = 0; i < nums.length; i++ ) {
+            maxDigits = Math.max( maxDigits, digitCount( nums[i] ) );
+        }
+        return maxDigits;
+    }
+
+    let maxDigitCount = mostDigits(nums);
+    for (let k=0; k<maxDigitCount; k++) {
+        // Array.from (below) creates an array with 10 array elements
+        let digitBuckets = Array.from({length:10}, () => []);
+        for (let i=0; i<nums.length; i++) {
+            let currentDigitIdx = getDigit(nums[i], k);
+            digitBuckets[currentDigitIdx].push(nums[i]);
+        }
+        // "..." spread operator
+        nums = [].concat(...digitBuckets);
+    }
+
+
+    return nums
+}
+console.log(radixSort([22,12,333,330,35,789,913,342,574,659,98,76]))
 

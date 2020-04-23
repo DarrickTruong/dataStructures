@@ -128,8 +128,32 @@ How do you improve algorithm problem solving?
             + Uses two functions
             + Divide and Conquer
         - Quick Sorting
-            + Similar to Merge Sorting
+            + Time Complexity: Best O(nlogn), Average O(nlogn), Worst O(n^2)
+                - Worst case if pivot is the first element in the array AND the array is sorted
+            + Space Complexity: O(log n)
+            + Similar processes to Merge Sorting
             + Use a Pivot/Partition helper function
+        - Radix Sorting
+            + Time Complexity: Best, average, worst O(nk)
+                - n length of array, k number of digits in the numbers
+            + Radix sorting does not involve comparisons for sorting
+            + Special sorting algorithm that works on lists of numbers
+                - Never compares between two elements
+                - Exploits the fact htat information about the size of a number is encoded in the number of digits
+                - More Digits means a bigger number!
+            + Utilizes several helper functions
+                - getDigit(num, place) - returns the digit in num at the give place value
+                - digitCount(num) - returns the number of digits in the num
+                - mostDigits(arr) - returns the number of digits in the largest numbers in the list
+                - Pseudocode 
+                    + Define a function that accepts a list of numbers
+                    + Figure out how many digits the largest number has
+                    + Loop from k=0 up to this largest number of digits
+                    + For each iteration of the loop: 
+                        - Create buckets/array for each digit (0-9)
+                        - place each number in the corresponding bucket based on its kth digit
+                    + Replace our existing array with values in our buckets, starting with 0 and going up to 9
+                    + return list at the end
 
 
 
