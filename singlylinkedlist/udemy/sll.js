@@ -29,13 +29,20 @@ class SLL {
         if(!this.head){
             return null
         } else {
+            if (this.head === this.tail) {
+                let popped = this.head;
+                this.head = null;
+                this.tail = null;
+                this.length--;
+                return popped;
+            }
             var current = this.head;
-            while(current.next!=this.tail){
+            while(current.next) {
+                var pre = current;
                 current = current.next;
             }
-            this.tail = current;
-            current = current.next;
-            this.tail.next = null;
+            pre.next = null;
+            this.tail = pre;
             this.length--;
         }
         return current;
