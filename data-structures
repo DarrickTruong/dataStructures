@@ -155,6 +155,61 @@ How do you improve algorithm problem solving?
                     + Replace our existing array with values in our buckets, starting with 0 and going up to 9
                     + return list at the end
 
+- JavaScript ES2015/ES6
+    + uses a constructor to create new class objects/instances
+        - Example...
+            + class Student {
+                constructor(name, year) {
+                    this.name = name;
+                    this.grade = year;
+                }
+            }
+    + Instantiate -> let John = new Student(John, junior)
+        - use "new" keyword
+    + Instance methods and Class methods
+        - Instance methods provide functionality that applies to an instance of a class and are called thru the instance
+        - Class methods use the 'static' keyword. Cannot be called thru the class instance. Name class methods with a plural 's'
+        - Example...
+            + class Student {
+                constructor(name, year) {
+                    this.name = name;
+                    this.grade = year;
+                    this.tardies = 0;
+                    this.scores = [];
+                }
+                // Instance Methods begin..
+                studentInfo() {
+                    return `Your info is ${this.name} and you are in your ${this.grade} year of high school`
+                }
+                markLate() {
+                    this.tardies++;
+                    if (this.tardies>=3) {
+                        return 'You are expelled!'
+                    } 
+                    return `${this.name} has been late ${this.tardies} times.`
+                }
+                addScore(score) {
+                    this.scores.push(score);
+                    return this.scores;
+                }
+                calculateAvg() {
+                    let sum = this.scores.reduce(function(a,b){return a+b;});
+                    return avg = sum/this.scores.length;
+                }
+                // Instance Methods ends
+
+                // Class Methods begin
+                enrollStudents() {
+                    return 'Enrolling Students'
+                }
+            }
+
+- Data structures
+    + Singly Linked list
+        - Do not have indices
+        - Connected via nodes with a next pointer
+        - random access is not allowed
+        - Good for insertion and deletion
 
 
 
