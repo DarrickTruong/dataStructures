@@ -210,6 +210,9 @@ How do you improve algorithm problem solving?
         - Connected via nodes with a next pointer
         - random access is not allowed
         - Good for insertion and deletion
+    + Double Linked list
+        - Almost identical to singly linked lists, except every node has another pointer to the previous node. 
+        
 
 
 
