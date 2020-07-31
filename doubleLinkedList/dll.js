@@ -38,16 +38,33 @@ class DoubleLinkedList {
 
   shift() {
     if (!this.head) return undefined;
-    let removeNode = this.head;
+    let oldHead = this.head;
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
     } else {
-      this.head = this.head.next;
-      removeNode.next = null;
+      this.head = oldHead.next;
+      this.head.previous = null; 
+      oldHead.next = null;
     }
     this.length--;
-    return removeNode
+    return oldHead
+  }
+
+  unshift(val) {
+    if (!this.head) return this.push(val);
+    else {
+      let newNode = new Node(val);
+      this.head.previous = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+      return this
+    }
+  }
+
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null;
+    if (idx <= this.length/2)
   }
 }
 
@@ -55,6 +72,6 @@ class DoubleLinkedList {
 
 let dll = new DoubleLinkedList();
 
-console.log(dll.push(1));
-console.log(dll.push(2));
-console.log(dll.shift());
+// console.log(dll.push(1));
+// console.log(dll.push(2));
+console.log(dll.unshift(0));
