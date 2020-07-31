@@ -35,10 +35,26 @@ class DoubleLinkedList {
     this.length--;
     return poppedNode;
   }
+
+  shift() {
+    if (!this.head) return undefined;
+    let removeNode = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      removeNode.next = null;
+    }
+    this.length--;
+    return removeNode
+  }
 }
+
+
 
 let dll = new DoubleLinkedList();
 
 console.log(dll.push(1));
 console.log(dll.push(2));
-console.log(dll.pop());
+console.log(dll.shift());
