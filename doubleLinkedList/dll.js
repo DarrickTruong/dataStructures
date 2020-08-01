@@ -64,7 +64,62 @@ class DoubleLinkedList {
 
   get(idx) {
     if (idx < 0 || idx >= this.length) return null;
-    if (idx <= this.length/2)
+    let current;
+    if (idx <= this.length/2) {
+      current = this.head;
+      while(idx) {
+        current = current.next;
+        idx--
+      }
+    } else {
+      current = this.tail;
+      let reverseIdx = this.length-1;
+      while (reverseIdx !== idx) {
+        current = current.previous;
+        reverseIdx--;
+      }
+    }
+      return current;
+  }
+
+  set(idx, newVal) {
+    let node = this.get(idx);
+    if (node) {
+      node.val = newVal;
+      return true;
+    }
+    return false;
+  }
+
+  insert(idx, val) {
+    if (idx < 0 || idx >= this.length) return false;
+    if (idx === 0) return !!this.unshift(val);
+    if (idx === this.length) return !!this.push(val);
+    
+    let newNode = new Node(val);
+    let previousNode = this.get(idx-1);
+    let afterNode = previousNode.next;
+
+    previousNode.next = newNode, newNode.previous = previousNode;
+    newNode.next = afterNode, afterNode.previous = newNode;
+    this.length++;
+    return true;
+  }
+
+  remove(idx) {
+    if (idx < 0 || idx >= this.length) return false;
+    if (idx === 0) return this.shift();
+    if (idx === this.length-1) return this.pop();
+
+    let removeNode = this.get(idx);
+    let previousNode = removeNode.previous;
+    let afterNode = removeNode.next;
+
+    removeNode.previous = null, removeNode.next = null;
+    previousNode.next = afterNode, afterNode.previous = previousNode;
+    
+    this.length--;
+    return removeNode;
   }
 }
 
@@ -72,6 +127,8 @@ class DoubleLinkedList {
 
 let dll = new DoubleLinkedList();
 
-// console.log(dll.push(1));
-// console.log(dll.push(2));
-console.log(dll.unshift(0));
+console.log(dll.push(1));
+console.log(dll.push(2));
+console.log(dll.set(0, "works"));
+console.log(dll.insert(1, "great"));
+console.log(dll);
