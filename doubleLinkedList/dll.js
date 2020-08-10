@@ -124,19 +124,18 @@ class DoubleLinkedList {
 
   reverse() {
     if (!this.head) return undefined;
+    let current = this.head;
+    while(current != null) {
+      let prevNode = current.previous; 
+      current.previous = current.next;
+      current.next = prevNode;
+      if (prevNode != null) prevNode.previous = current;
+      current = current.previous;
+    }
     let oldHead = this.head;
     this.head = this.tail;
     this.tail = oldHead;
-
-    let current = this.head;
-    let prevNode = current.previous;
-    while(current) {
-      prevNode = current.previous; 
-      current.next = prevNode;
-      prevNode.previous = current;
-      current = current.next;
-    }
-    return this;
+    return "reversed " , this;
   }
 }
 
@@ -147,7 +146,7 @@ let dll = new DoubleLinkedList();
 console.log(dll.push(1));
 console.log(dll.push(2));
 console.log(dll.push(3));
-console.log(dll);
+console.log('normal', dll);
 // console.log(dll.set(0, "works"));
 // console.log(dll.insert(1, "great"));
 console.log(dll.reverse());
