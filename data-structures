@@ -210,10 +210,11 @@ How do you improve algorithm problem solving?
         - Connected via nodes with a next pointer
         - random access is not allowed
         - Good for insertion and deletion
-    + Double Linked list
+    + Doubly Linked list
         - Almost identical to singly linked lists, except every node has another pointer to the previous node. 
+        - Better than singly linked list for finding nodes and can be done in half the time
+        - However, they do take up more memory considering the extra pointer
         
-
 
 
 

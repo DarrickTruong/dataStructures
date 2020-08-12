@@ -52,14 +52,17 @@ class DoubleLinkedList {
   }
 
   unshift(val) {
-    if (!this.head) return this.push(val);
-    else {
-      let newNode = new Node(val);
-      this.head.previous = newNode;
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
       newNode.next = this.head;
       this.head = newNode;
-      return this
     }
+    this.length++;
+    return this
   }
 
   get(idx) {
@@ -115,8 +118,8 @@ class DoubleLinkedList {
     let previousNode = removeNode.previous;
     let afterNode = removeNode.next;
 
-    removeNode.previous = null, removeNode.next = null;
     previousNode.next = afterNode, afterNode.previous = previousNode;
+    removeNode.previous = null, removeNode.next = null;
     
     this.length--;
     return removeNode;
