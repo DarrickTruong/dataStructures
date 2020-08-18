@@ -153,3 +153,4 @@ console.log('normal', dll);
 // console.log(dll.set(0, "works"));
 // console.log(dll.insert(1, "great"));
 console.log(dll.reverse());
+console.log(dll.reverse());
