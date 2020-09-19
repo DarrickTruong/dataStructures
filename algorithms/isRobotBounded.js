@@ -25,6 +25,7 @@ var isRobotBounded = function(instructions) {
     }
 
     for (let i = 0; i < instructions.length; i++) {
+        console.log(instructuion);
 
     }
 
