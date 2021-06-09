@@ -9,8 +9,8 @@ let naiveStringSearch = (searchString, target) => {
     let s1 = 0
     let t1 = 0
 
-    while(s1 < searchString.length) {
-        
+    while (s1 < searchString.length) {
+
         if (searchString[s1] === target[t1]) t1++
         else {
             if (searchString[s1] === target[0]) {
@@ -20,7 +20,7 @@ let naiveStringSearch = (searchString, target) => {
 
         if (t1 === target.length) {
             count++
-            t1=0
+            t1 = 0
         }
 
         s1++
@@ -29,4 +29,5 @@ let naiveStringSearch = (searchString, target) => {
     return count
 }
 
-console.log(naiveStringSearch("helloworldwoworld", "world"))
+// console.log(naiveStringSearch("helloworldwoworld", "world"))
+
